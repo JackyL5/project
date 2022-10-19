@@ -24,20 +24,20 @@ public LinearEquation(int x1, int y1, int x2, int y2)
 
 
     public double distance(){
-        return Math.round((Math.sqrt(Math.pow(x2-x1,2)+Math.pow(2-y1,2))));
+        return roundedToHundredth((Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2))));
     }
 
     /* Calculates and returns the slope of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
     public double slope() {
-        return (((y2-y1)/(x2-x1));
+        return roundedToHundredth((double)(y2-y1)/(x2-x1));
     }
 
 
     /* Calculates and returns the y-intercept of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
     public double yIntercept(){
-
+return roundedToHundredth(y1 - slope()* x1);
     }
 
 
@@ -68,7 +68,7 @@ public LinearEquation(int x1, int y1, int x2, int y2)
                subtraction!
      */
     public String equation(){
-
+return "y = " + slope() + "x" + yIntercept();
     }
 
 
@@ -78,7 +78,7 @@ public LinearEquation(int x1, int y1, int x2, int y2)
     /* Returns a String of the coordinate point on the line that has the given x value, with
        both x and y coordinates as decimals to the nearest hundredth, e.g (-5.0, 6.75) */
     public String coordinateForX(double xValue){
-
+return "(" + xValue + "," + (xValue*slope()+yIntercept()) + ")";
     }
 
 
@@ -91,7 +91,7 @@ public LinearEquation(int x1, int y1, int x2, int y2)
         HINT:  the Math.round method can help with this!
      */
     public double roundedToHundredth(double toRound){
-
+return Math.round(toRound*100.0)/100.0;
     }
 
 
@@ -109,6 +109,7 @@ public LinearEquation(int x1, int y1, int x2, int y2)
 
       */
     public String lineInfo(){
+return "The original points: ("+ x1 + "," + y1 + ") and (" + x2 + "," + y2 + ") \n The equation of the line in y + mx + b format :" + equation() + "\nThe slope of the line, as a decimal " + slope() + "\nThe y-intercept of the line" + yIntercept() + "\nThe distance between the two points" + distance();
 
     }
 
